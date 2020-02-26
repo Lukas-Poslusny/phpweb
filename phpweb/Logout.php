@@ -2,13 +2,11 @@
 
 session_start();
 
-if ($_POST['username'] ?? null || $_POST['password'] ?? null) {
+if ($_POST["loggedIn"] === false) {
     unset($_SESSION['username']);
     unset($_SESSION['password']);
 }
 else {
-    header('location: login.php');
+    header('location: /Login.php');
     exit();
 }
-
-?>
