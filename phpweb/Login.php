@@ -3,7 +3,7 @@ Session_start();
 
 
 if ($_SESSION['loggedIn'] ?? null === true) {
-    header("location:/Lorem.php");
+    header("location:/Lorem");
     exit();
 }
 
@@ -14,13 +14,13 @@ $username_login = $_POST['username'] ?? null;
 $password_login = $_POST['password'] ?? null;
 
 if ($username === null && $password === null) {
-    header("location:/Registrace.php");
+    header("location:/Registrace");
     exit();
 }
 
 if (($username === $username_login && $username !== null) && ($password === $password_login && $password !== null)) {
     $_SESSION['loggedIn'] = true;
-    header("location:/Lorem.php");
+    header("location:/Lorem");
     exit();
 }
 

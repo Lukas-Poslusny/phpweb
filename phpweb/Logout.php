@@ -3,5 +3,5 @@
 session_start();
 session_destroy();
 
-header("location:/Registrace.php");
+header("location:/Registrace");
 exit();

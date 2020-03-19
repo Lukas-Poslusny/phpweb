@@ -16,11 +16,8 @@ switch ($url){
     case '/Lorem' : $filename = 'Lorem.php';
     break;
 
-    default : $filename = 'index.php';
+    default : $filename = '404.php';
     break;
 }
 
 require $filename;
-
-header("location:/$filename");
-exit();

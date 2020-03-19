@@ -2,12 +2,12 @@
 Session_start();
 
 if ($_SESSION['loggedIn'] ?? null === true) {
-    header("location:/Lorem.php");
+    header("location:/Lorem");
     exit();
 }
 
 if ($_SESSION['username'] ?? null !== null && $_SESSION['password'] ?? null !== null) {
-    header("location:/Login.php");
+    header("location:/Login");
     exit();
 }
 
@@ -17,7 +17,7 @@ $password = $_POST['password'] ?? null;
 if (is_string($username) && is_string($password)) {
     $_SESSION['username'] = $username;
     $_SESSION['password'] = $password;
-    header("location:/Login.php");
+    header("location:/Login");
     exit();
 }
 ?>

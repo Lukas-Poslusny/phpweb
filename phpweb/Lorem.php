@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SESSION['loggedIn'] !== true) {
-    header("location:/Login.php");
+    header("location:/Login");
     exit();
 }
 
@@ -12,4 +12,4 @@ echo "Hi, ".($_SESSION['username']);
 
 ?>
 <br>
-<a href="/Logout.php">Log out</a>
+<a href="/Logout">Log out</a>
