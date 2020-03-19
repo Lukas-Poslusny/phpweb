@@ -1,21 +1,28 @@
-<form>
-    <label>Username: <input type="text" name="username"></label>
-    <label>Password: <input type="password" name="password"></label>
-    <input type="submit" value="click" (click)="submit(username, password)">submit</input>
-</form>
-
-<p>Already registered?</p>
-<a href = /Login.php>Sign in</a>
-
 <?php
 Session_start();
 
-function submit($username, $password) {
-    $_SESSION["name"] = $_POST["name"]; 
-    $_SESSION["pass"] = $_POST["pass"];
-
-    if ($_POST['username'] ?? null || $_POST['password'] ?? null) {
-        header('location: /lorem.php');
-        exit();
-    }
+if ($_SESSION['loggedIn'] ?? null === true) {
+    header("location:/Lorem.php");
+    exit();
 }
+
+if ($_SESSION['username'] ?? null !== null && $_SESSION['password'] ?? null !== null) {
+    header("location:/Login.php");
+    exit();
+}
+
+$username = $_POST['username'] ?? null;
+$password = $_POST['password'] ?? null;
+
+if (is_string($username) && is_string($password)) {
+    $_SESSION['username'] = $username;
+    $_SESSION['password'] = $password;
+    header("location:/Login.php");
+    exit();
+}
+?>
+<form method="post">
+    <label>Username: <input type="text" name="username"></label>
+    <label>Password: <input type="password" name="password"></label>
+    <input type="submit">
+</form>

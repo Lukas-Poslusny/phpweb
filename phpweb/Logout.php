@@ -1,12 +1,7 @@
 <?php
 
 session_start();
+session_destroy();
 
-if ($_POST["loggedIn"] === false) {
-    unset($_SESSION['username']);
-    unset($_SESSION['password']);
-}
-else {
-    header('location: /Login.php');
-    exit();
-}
+header("location:/Registrace.php");
+exit();

@@ -1,6 +1,26 @@
 <?php
 
-session_start();
+$url =  $_SERVER['REQUEST_URI'];
 
-$_SESSION['username'] = null;
-$_SESSION['password'] = null;
+
+switch ($url){
+    case '/Login': $filename = 'Login.php';
+    break;
+
+    case '/Registrace': $filename = 'Registrace.php';
+    break;
+
+    case '/Logout' : $filename = 'Logout.php';
+    break;
+
+    case '/Lorem' : $filename = 'Lorem.php';
+    break;
+
+    default : $filename = 'index.php';
+    break;
+}
+
+require $filename;
+
+header("location:/$filename");
+exit();
