@@ -2,28 +2,31 @@
 Session_start();
 
 // if user is already logged in, forward to /Lorem
-if ($_SESSION['loggedIn'] ?? null === true) {
-    header("location:/Lorem");
-    exit();
+if (($_SESSION['loggedIn'] ?? null) === true) {
+    /*header("location:/Lorem");
+    exit();*/
+    var_dump($_SESSION);
 }
 
 // save username & password locally
-$username = $_SESSION['username'] ?? null;
-$password = $_SESSION['password'] ?? null;
-$username_login = $_POST['username'] ?? null;
-$password_login = $_POST['password'] ?? null;
+$username = $_POST['username'] ?? null;
+$password = $_POST['password'] ?? null;
 
-// if username or password doesnt exist in session, forward to /Registrace
-if ($username === null || $password === null) {
-    header("location:/Registrace");
-    exit();
-}
 
-// if value of username & password = registered username & password, forward to /Lorem
-if (($username === $username_login) && ($password === $password_login)) {
-    $_SESSION['loggedIn'] = true;
-    header("location:/Lorem");
-    exit();
+if ($username !== null && $password !== null) {
+    $json = file_get_contents('RegisteredUsers.json');
+    $data = json_decode($json);
+
+    foreach ($data as $user) {
+
+        if (($user->username === $username) && ($user->password === $password)) {
+            $_SESSION['username'] = $username;
+            $_SESSION['loggedIn'] = true;
+            header("location:/Lorem");
+            exit();
+        }
+        // havent found users username and password
+    }
 }
 
 ?>
