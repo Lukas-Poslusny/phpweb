@@ -18,11 +18,8 @@ if (!is_string($username) || !is_string($password)) {
 
 // if user has entered username and password, save post to json file
 if (($username !== null) && ($password !== null)) {
-    $json = file_get_contents('RegisteredUsers.json');
-    $data = json_decode($json);
-    $data[] = ['username' => $username, 'password' => $password];
+    (new UserRepository())->saveUser($username, $password);
 
-    file_put_contents('RegisteredUsers.json', json_encode($data));
     // successfully registered, forwards to /Login
     header("location:/Login");
     exit();
