@@ -1,5 +1,7 @@
 <?php
 Session_start();
+include 'UserRepository.php';
+include 'Login.phtml';
 
 // if user is already logged in, forward to /Lorem
 if (($_SESSION['loggedIn'] ?? null) === true) {
@@ -19,11 +21,5 @@ if ($username !== null && $password !== null) {
         exit();
     }
     // TODO returned false
-    // havent found users username and password
+    // haven't found users username and password
 }
-?>
-<form method="post">
-    <label>Username: <input type="text" name="username"></label>
-    <label>Password: <input type="password" name="password"></label>
-    <input type="submit">
-</form>

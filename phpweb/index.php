@@ -7,7 +7,7 @@ switch ($url){
     case '/Login': $filename = 'Login.php';
     break;
 
-    case '/Registrace': $filename = 'Registrace.php';
+    case '/Register': $filename = 'Register.php';
     break;
 
     case '/Logout' : $filename = 'Logout.php';
